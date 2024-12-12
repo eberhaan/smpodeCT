@@ -58,34 +58,29 @@ $(function() {
   // Avatar slide in which the participant is asked to select an avatar
    
 function init_avatar() {
-    $('#avatar').show();  // Zeigt die Avatar-Auswahlseite an
+    $('#avatar').show();
 
-    var avatars = window.settings.numberofavatars;    
-    for (var i = 1; i <= avatars; i++) {  // Durchlaufe alle Avatare
-        // Erstelle HTML für jedes Avatar-Bild und füge es der Seite hinzu
-        $('.avatars').append('<img id="avatar_' + i + '" src="avatars/avatar_' + i + '.png" class="avatar" alt="Avatar ' + i + '" />');
+    var avatars = window.settings.numberofavatars;
+    for (var i = 1; i < avatars; i++) { 
+        $('.avatars').append('<img id="avatar_' + i + '" src="avatars/avatar_' + i + '.png" class="avatar" />');
     }
 
-    // Event Listener für die Avatar-Auswahl
     $('.avatar').on('click', function() {
-        $('.avatar').removeClass('selected');  // Entferne die Auswahl von allen Avataren
-        $(this).addClass('selected');          // Markiere das ausgewählte Avatar
+        $('.avatar').removeClass('selected');
+        $(this).addClass('selected');
     });
 
-    // Wenn der Benutzer auf "Weiter" klickt
     $('#submit_avatar').on('click', function() {
-        if ($('.selected').length == 1) {  // Wenn ein Avatar ausgewählt wurde
+        if ($('.selected').length == 1) {
             $('#avatar').hide();
-            window.avatar = $('.selected').attr('id');  // Speichern des ausgewählten Avatars
-            window.avatarexport = /avatar_([^\s]+)/.exec(window.avatar)[1];  // Extrahieren der Avatar-ID
-            init_text();  // Weiter zum nächsten Schritt (Text eingeben)
+            window.avatar = $('.selected').attr('id');
+            window.avatarexport = /avatar_([^\s]+)/.exec(window.avatar)[1];
+            init_text();
         } else {
             alertify.log("Bitte wählen Sie einen Avatar aus", "error");
         }
     });
 }
-
-
 
   // **Text Input Slide**
   function init_text() {
