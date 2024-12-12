@@ -381,21 +381,23 @@ function get_params() {
  function finishExperiment() {
     console.log("Experiment abgeschlossen. Weiterleitung zu:", window.redirect);
 
-    // Sicherstellen, dass die URL korrekt ist
     if (!window.redirect || window.redirect === "") {
         alert("Es gab ein Problem mit der Weiterleitung. Bitte kontaktieren Sie den Support.");
     } else {
-        // Rückleitung zur spezifischen LimeSurvey-Seite
-        window.location.href = window.redirect + "&done=1";
-
-        // Versuchen, das Fenster automatisch zu schließen
+        // Weiterleitung und Tab-Schließung
         setTimeout(() => {
             if (window.opener && !window.opener.closed) {
-                window.close();
+                // Rückleitung ins ursprüngliche LimeSurvey-Tab
+                window.opener.location.href = window.redirect + "&done=1";
+                window.close(); // Schließt das Experiment-Tab
+            } else {
+                // Falls kein Original-Tab gefunden wird, normale Weiterleitung
+                window.location.href = window.redirect + "&done=1";
             }
-        }, 500);
+        }, 1000); // 1 Sekunde Verzögerung für Sicherheit
     }
 }
+
 
 
   // The variable QueryString contains the url parameters, i.e. condition no. and participant no.
