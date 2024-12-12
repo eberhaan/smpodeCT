@@ -18,12 +18,43 @@ $(function() {
     settings.numberofavatars = (37);
 
 	
-    // **Redirection**    
-	// After the introduction task is over participants should be redirected to a survey with manipulation checks and dependent measures, to subsequent tasks, or to further instructions. 
-	// If the study is called with a parameter for redirection, as explained in the documentation, this value is overwritten. 
-	// To the redirect link, the following information will be appended: (1) participant number, (2) condition, (3) username, (4) description submitted by participant. These variables can be extracted from the link, saved as data, and used for linking the Social Media Ostracism paradigm to subsequent tasks and measures. See documentation for more details.
+  // **Redirection**
+// After the introduction task is over, participants should be redirected to the survey.
+// The `redirect` parameter in the URL will be used if provided. Otherwise, it falls back to `defaultredirect`.
+document.addEventListener("DOMContentLoaded", function () {
+    const continueButton = document.getElementById("continue-button"); // Button to finish the task
 
-    settings.defaultredirect = 'https://default-questionnaire.com';
+    if (continueButton) {
+        continueButton.addEventListener("click", function () {
+            console.log("Continue button clicked. Preparing redirection...");
+
+            // Check if a redirect URL is provided via query parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const redirectUrl = urlParams.get("redirect") || settings.defaultredirect;
+
+            if (!redirectUrl) {
+                alert("Redirect URL is not defined. Please contact support.");
+                return;
+            }
+
+            // Append necessary participant data to the redirect URL
+            const participantNumber = "12345"; // Replace with actual participant number logic
+            const condition = urlParams.get("c"); // Get condition (c=1 or c=2)
+            const username = "testUser"; // Replace with actual username logic
+            const description = "testDescription"; // Replace with actual description logic
+
+            const fullRedirectUrl = `${redirectUrl}?participant=${participantNumber}&condition=${condition}&username=${encodeURIComponent(username)}&description=${encodeURIComponent(description)}`;
+            console.log("Full redirect URL:", fullRedirectUrl);
+
+            // Perform the redirection and close the tab
+            window.opener.location.href = fullRedirectUrl; // Update the original LimeSurvey tab
+            window.close(); // Close the current tab
+        });
+    }
+});
+
+// Default redirect if no redirect parameter is passed
+settings.defaultredirect = 'https://default-questionnaire.com';
 
 	
 	// **Tasklength**     
