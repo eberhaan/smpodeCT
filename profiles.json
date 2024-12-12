@@ -1,0 +1,74 @@
+// **Group members profiles**   
+// Each profile consists of (1) avatar, (2) username, (3) personal description, (4) number of "likes" the profile will receive throughout the interaction
+	
+window.others = {
+  "posts" : [
+      {
+        "avatar": "avatars/others/john.png",
+        "username": "John",
+        "text": "Ich bin ein 19 Jahre alter Typ aus Tirol. Ich liebe Musik und höre zur Zeit nichts anderes als Joy Division, Echo & the bunnymen, und the smiths. Außer Musik mag ich auch Sprachen, Psychologie, Zeichnen und Schreiben!",
+        "likes": [45000, 50000, 110000, 150000] //4
+      },
+      {
+        "avatar": "avatars/others/sarah.png",
+        "username": "Sarah",
+        "text": "Ich möchte mich mal vorstellen. Ich bin Sarah, verheiratet, Mutter von zwei wundervollen (Teenie) Kindern. Meine Karriere war bisher ein wenig... anders. Ich habe als Diplom-Historikerin angefangen und bin dann in ein ganz anderes Fachgebiet gewechselt: Ich bin Berufsgutachterin und versuche, jungen Menschen mit Behinderungen zu helfen, einen Arbeitsplatz zu finden. Seit meine Kinder groß sind verbringe nun mehr Zeit mit meinen Hobbys, wie Singen, Lesen und Volleyball spielen",
+        "likes": [12000, 14000,15000,35000,80000,100000,110000,150000,20000] //9
+      },
+      {
+        "avatar": "avatars/others/georg.png",
+        "username": "Georg",
+        "text": "Hallo, ich bin Georg, 57 Jahre jung, verheiratet, zwei Kinder. Ich war 30 Jahre lang Programmierer, aber seid nicht besorgt: Ich habe weder einen komischen Haarschnitt, noch trage ich karierte Hemden oder riesige Nerd-Brillen. Ich freue mich schon, mit Euch allen zusammenzuarbeiten. Grüße, Georg.",
+		"likes": [20000, 21000] //2
+      },
+      {
+        "avatar": "avatars/others/anna.png",
+        "username": "Anna",
+        "text": "Ich bin Studentin der Informatik und interessiere mich für die Verarbeitung natürlicher Sprache. Außerdem liebe ich losen Tee (also keine Beutel!!) und nin eine Enthusiastin des Semantic Webs. Ich bin neugierig, worum es bei dieser Aufgabe geht",
+        "likes": [10000, 12000, 40000, 80000, 120000] //5
+      },
+      {
+        "avatar": "avatars/others/niki.png",
+        "username": "Niki",
+        "text": "In meinem Leben dreht sich alles ums Klettern. Ich habe mit dem Klettern begonnen, als ich 12 war (ich werde bald 20) und klettere normalerweise 4-5 Stunden am Tag. Klettern wird mir nie langweilig, weil es jedes Mal anders ist - die Routen, das Wetter, meine Kraft und Ausdauer. Es ist großartig!",
+        "likes": [40000, 450000, 90000, 100000, 150000, 155000] //6
+      },
+    {
+        "avatar": "avatars/others/maria.png",
+        "username": "Maria",
+        "text": "Mein Name ist Maria und ich bin 49 Jahre alt. Ich habe einen Ehemann und 2 erwachsene Söhne. Meine Familie und ich haben eigentlich in verschiedenen Ländern gelebt - Unsere Söhne besuchten überall internationale Schulen, und seit ich nach England gezogen bin, habe ich auch an diesen Schulen Arbeit gefunden. Neben dem Herumreisen in der Welt spiele ich gerne verschiedene Spiele - Brettspiele, Karten, Black Jack oder Poker, Mah Jongg, oder alberne Spiele auf Facebook, einfach alles.",
+        "likes": [20000, 25000, 95000] //3
+      },
+      {
+        "avatar": "avatars/others/laura.png",
+        "username": "Laura",
+        "text": "Ich bin Laura, ich liebe es, mit Freunden zu chillen und shoppen zu gehen! Mach nur ein paar Online Studien hier!",
+        "likes": [12000, 38000] //1
+      },
+          {
+        "avatar": "avatars/others/kim.png",
+        "username": "Ky",
+        "text": "Hey. Ich bin 22, gebürtige Koreanerin. Ich lebe hier schon seit ich 4 war. Ich denke, ich bin recht nett, aber auch kein Engel. Ich mag es einfach, wenn sich die Leute, die ich treffe, wohl fühlen. In meiner Freizeit lerne ich gerne neue Leute kennen, rede mit ihnen über alles mögliche, schaue mir Gemälde an, lese viel, singe (in einem Chooooooor!), und ich liebe gutes Essen! Habt einen schönen Tag und stellt nichts an <3",
+        "likes": [10000, 50000, 88000, 11000, 11500, 120000, 15000] //7
+      },
+      {
+        "avatar": "avatars/others/felix.png",
+        "username": "Felix",
+        "text": "Mein Name ist Felix, ich studiere über Künstliche Intelligenz. Meine Freizeit verwende ich dazu, die unterschiedlichsten Dinge zu tun... Ich bin auch irgendwie ein Nerd, denk ich mal.",
+        "likes": [12000, 40000, 120000] //3
+      },
+      {
+        "avatar": "avatars/others/janine.png",
+        "username": "Janine",
+        "text": "Ich beende bald mein erstes Jahr eines schwierigen naturwissenschaftlichen Studiengangs an der Universität. Außerdem arbeite ich nebenbei in einer Kosmetikabteilung und verdiene in meiner Freizeit etwas Geld im Internet mit selbstgemachtem Schmuck. Für meine Zukunft habe ich noch viel vor, und das ist wirklich aufregend! Ich möchte einmal Ärztin werden und eine Familie mit vielen kleinen Hunden haben. Das wird fantastisch.",
+        "likes": [13000, 50000, 80000, 88000, 120000] //5
+      },
+      {
+        "avatar": "avatars/others/lisa.png",
+        "username": "Lisa",
+        "text": "Liebe Alle, ich bin Lisa und habe bald ein sehr wichtiges Interview... Ich kann nur noch daran denken. Ich hoffe, es geht euch allen gut!",
+        "likes": [10000, 50000] //6
+      },
+
+    ]
+  };
