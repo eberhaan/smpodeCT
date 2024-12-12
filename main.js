@@ -1,26 +1,20 @@
-// **Instructions main.js**
 $(function() {
 
   // **Parameters**
   function set_settings() {
     window.settings = [];
-
-    // **Number of Avatar Images**
+    
+    // Task settings
     settings.numberofavatars = 37;
+    settings.tasklength = 180000;  // 3 Minuten
+    settings.condition_1_likes = [12000, 9999999]; 
+    settings.condition_2_likes = [10000, 15000,35000,80000,1320000,150000];  
 
-    // **Task length (in ms)**
-    settings.tasklength = 180000;
+    // Others' likes
+    settings.condition_1_adjusted_likes = [12000, 14000,15000,35000,80000,100000,110000,150000,20000]; 
+    settings.condition_2_adjusted_likes = [12000, 14000,15000,35000]; 
 
-    // **Number of likes**
-    settings.condition_1_likes = [12000, 9999999]; // Condition 1 (Exclusion)
-    settings.condition_2_likes = [10000, 15000, 35000, 80000, 1320000, 150000]; // Condition 2 (Inclusion)
-
-    // **Others' likes**
-    settings.condition_1_adjusted_likes = [12000, 14000, 15000, 35000, 80000, 100000, 110000, 150000, 20000];
-    settings.condition_2_adjusted_likes = [12000, 14000, 15000, 35000];
-
-    // **Likes by**
-    settings.likes_by = ['John','Anna','Sarah','Felix','Janine','Georg','Niki','Lisa','Ky'];
+    settings.likes_by = ['John','Anna','Sarah','Felix','Janine','Georg','Niki','Lisa','Ky']; 
   }
 
   // **Intro Slide**
@@ -32,7 +26,7 @@ $(function() {
     });
   }
 
-  // **Username Slide**
+  // **Name Slide**
   function init_name() {
     $('#name').show();
 
