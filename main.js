@@ -5,7 +5,7 @@ $(function() {
     window.settings = [];
     
     // Task settings
-    settings.numberofavatars = 37;
+    ettings.numberofavatars = (37);
     settings.tasklength = 180000;  // 3 Minuten
     settings.condition_1_likes = [12000, 9999999]; 
     settings.condition_2_likes = [10000, 15000,35000,80000,1320000,150000];  
@@ -54,33 +54,36 @@ $(function() {
     });
   }
 
-  // **Avatar Selection Slide**
+// **Slide:** **Avatar**       
+  // Avatar slide in which the participant is asked to select an avatar
+   
   function init_avatar() {
-    $('#avatar').show();
+  	$('#avatar').show();
 
     var avatars = window.settings.numberofavatars;    
-    for (var i = 1; i <= avatars; i++) {  // Stelle sicher, dass i bis zur Anzahl der Avatare geht
-        $('.avatars').append('<img id="avatar_' + i + '" src="avatars/avatar_' + i + '.png" class="avatar" />');
-    }
+  	for(var i=1; i<avatars; i++) 
+  	{ 
+  		$('.avatars').append('<img id="avatar_' + i+ '" src="avatars/avatar_' + i + '.png" class="avatar" />');
+  	} 
 
-    // Setze ein Event Listener für die Avatar-Auswahl
-    $('.avatar').on('click', function() {
-        $('.avatar').removeClass('selected');
-        $(this).addClass('selected');
-    });
+  	$('.avatar').on('click', function() {
+  		$('.avatar').removeClass('selected');
+  		$(this).addClass('selected');
+  	});
 
-    // Wenn der Avatar ausgewählt wurde, gehe weiter
-    $('#submit_avatar').on('click', function() {
-        if ($('.selected').length == 1) {
-            $('#avatar').hide();
-            window.avatar = $('.selected').attr('id'); // Speichern des ausgewählten Avatars
-            window.avatarexport = /avatar_([^\s]+)/.exec(window.avatar)[1]; // Extrahieren der Avatar-ID
-            init_text(); // Weiter zum nächsten Schritt
-        } else {
-            alertify.log("Bitte wählen Sie einen Avatar aus", "error");
-        }
-    });
-}
+    	$('#submit_avatar').on('click',function() {
+    		if($('.selected').length == 1) {
+  			$('#avatar').hide();
+  			window.avatar = $('.selected').attr('id');
+  			window.avatarexport = /avatar_([^\s]+)/.exec(window.avatar)[1];
+    			init_text();  			
+    		} else {
+    			alertify.log("Bitte wählen Sie einen Avatar aus","error");
+    		}
+    	});
+
+  }
+
 
   // **Text Input Slide**
   function init_text() {
