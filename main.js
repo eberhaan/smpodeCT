@@ -58,24 +58,30 @@ $(function() {
   // Avatar slide in which the participant is asked to select an avatar
    
 function init_avatar() {
-    $('#avatar').show();
+    $('#avatar').show(); // Zeigt den Avatar-Auswahlbereich an
 
     var avatars = window.settings.numberofavatars;
-    for (var i = 1; i < avatars; i++) { 
-        $('.avatars').append('<img id="avatar_' + i + '" src="avatars/avatar_' + i + '.png" class="avatar" />');
+
+    // Hinzufügen der Avatare zum DOM
+    for (var i = 1; i <= avatars; i++) { 
+        const avatarHTML = `<img id="avatar_${i}" src="avatars/avatar_${i}.png" class="avatar" alt="Avatar ${i}" />`;
+        $('.avatars').append(avatarHTML);
     }
 
+    // Auswahl eines Avatars
     $('.avatar').on('click', function() {
-        $('.avatar').removeClass('selected');
-        $(this).addClass('selected');
+        $('.avatar').removeClass('selected'); // Entferne vorherige Auswahl
+        $(this).addClass('selected');        // Markiere den ausgewählten Avatar
     });
 
+    // Weiter-Button
     $('#submit_avatar').on('click', function() {
-        if ($('.selected').length == 1) {
-            $('#avatar').hide();
-            window.avatar = $('.selected').attr('id');
-            window.avatarexport = /avatar_([^\s]+)/.exec(window.avatar)[1];
-            init_text();
+        if ($('.selected').length === 1) {  // Überprüfen, ob ein Avatar ausgewählt wurde
+            $('#avatar').hide();            // Versteckt den Avatar-Bereich
+            window.avatar = $('.selected').attr('id'); // Speichert die Avatar-ID
+            window.avatarexport = /avatar_([^\s]+)/.exec(window.avatar)[1]; // Extrahiert die Avatar-Nummer
+            console.log("Avatar ausgewählt:", window.avatar);
+            init_text(); // Weiter zur nächsten Funktion
         } else {
             alertify.log("Bitte wählen Sie einen Avatar aus", "error");
         }
