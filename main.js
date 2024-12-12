@@ -59,26 +59,28 @@ $(function() {
     $('#avatar').show();
 
     var avatars = window.settings.numberofavatars;    
-    for(var i=1; i<avatars; i++) { 
-        $('.avatars').append('<img id="avatar_' + i+ '" src="avatars/avatar_' + i + '.png" class="avatar" />');
+    for (var i = 1; i <= avatars; i++) {  // Stelle sicher, dass i bis zur Anzahl der Avatare geht
+        $('.avatars').append('<img id="avatar_' + i + '" src="avatars/avatar_' + i + '.png" class="avatar" />');
     }
 
+    // Setze ein Event Listener für die Avatar-Auswahl
     $('.avatar').on('click', function() {
         $('.avatar').removeClass('selected');
         $(this).addClass('selected');
     });
 
-    $('#submit_avatar').on('click',function() {
-        if($('.selected').length == 1) {
+    // Wenn der Avatar ausgewählt wurde, gehe weiter
+    $('#submit_avatar').on('click', function() {
+        if ($('.selected').length == 1) {
             $('#avatar').hide();
-            window.avatar = $('.selected').attr('id');
-            window.avatarexport = /avatar_([^\s]+)/.exec(window.avatar)[1];
-            init_text();
+            window.avatar = $('.selected').attr('id'); // Speichern des ausgewählten Avatars
+            window.avatarexport = /avatar_([^\s]+)/.exec(window.avatar)[1]; // Extrahieren der Avatar-ID
+            init_text(); // Weiter zum nächsten Schritt
         } else {
-            alertify.log("Bitte wählen Sie einen Avatar aus","error");
+            alertify.log("Bitte wählen Sie einen Avatar aus", "error");
         }
     });
-  }
+}
 
   // **Text Input Slide**
   function init_text() {
