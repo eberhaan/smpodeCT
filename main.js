@@ -18,45 +18,6 @@ $(function() {
     settings.numberofavatars = (37);
 
 	
-  // **Redirection**
-// After the introduction task is over, participants should be redirected to the survey.
-// The `redirect` parameter in the URL will be used if provided. Otherwise, it falls back to `defaultredirect`.
-document.addEventListener("DOMContentLoaded", function () {
-    const continueButton = document.getElementById("continue-button"); // Button to finish the task
-
-    if (continueButton) {
-        continueButton.addEventListener("click", function () {
-            console.log("Continue button clicked. Preparing redirection...");
-
-            // Check if a redirect URL is provided via query parameters
-            const urlParams = new URLSearchParams(window.location.search);
-            const redirectUrl = urlParams.get("redirect") || settings.defaultredirect;
-
-            if (!redirectUrl) {
-                alert("Redirect URL is not defined. Please contact support.");
-                return;
-            }
-
-            // Append necessary participant data to the redirect URL
-            const participantNumber = "12345"; // Replace with actual participant number logic
-            const condition = urlParams.get("c"); // Get condition (c=1 or c=2)
-            const username = "testUser"; // Replace with actual username logic
-            const description = "testDescription"; // Replace with actual description logic
-
-            const fullRedirectUrl = `${redirectUrl}?participant=${participantNumber}&condition=${condition}&username=${encodeURIComponent(username)}&description=${encodeURIComponent(description)}`;
-            console.log("Full redirect URL:", fullRedirectUrl);
-
-            // Perform the redirection and close the tab
-            window.opener.location.href = fullRedirectUrl; // Update the original LimeSurvey tab
-            window.close(); // Close the current tab
-        });
-    }
-});
-
-// Default redirect if no redirect parameter is passed
-settings.defaultredirect = 'https://default-questionnaire.com';
-
-	
 	// **Tasklength**     
     // Length of the group introduction task in milliseconds. Can be changed to any number (in ms). Default: 180000 (3min) 
     settings.tasklength = 180000; 
@@ -74,9 +35,9 @@ settings.defaultredirect = 'https://default-questionnaire.com';
     
 
 	// **Others' likes**     
-	// To keep the total distribution of "likes" constant across conditions, The "likes" received by one group member can be adjusted according to the participant's. By default, the other group member receives 9 "likes" in the participant-ostracism condition, 5 in the participant-inclusion condtion, and 1 in the participant-overinclusion condtion.
+	// To keep the total distribution of "likes" constant across conditions, The "likes" received by one group member can be adjusted according to the participant's. By default, the other group member receives 9 "likes" in the participant-ostracism condition, 4 in the participant-inclusion condtion, and 1 in the participant-overinclusion condtion.
 	settings.condition_1_adjusted_likes = [12000, 14000,15000,35000,80000,100000,110000,150000,20000]; // 9
-	settings.condition_2_adjusted_likes = [12000, 14000,15000,35000,80000]; // 5
+	settings.condition_2_adjusted_likes = [12000, 14000,15000,35000]; // 4
 	
 	
     // Usernames by which the participant will receive "likes"
@@ -346,16 +307,26 @@ settings.defaultredirect = 'https://default-questionnaire.com';
     $('#timer').text('00:00');
     
     $('#final-continue').on('click', function() {
-// Redirect link
-      location.href = window.redirect+'&p='+window.participant+'&c='+window.condition+'&u='+encodeURI(window.username)+'&av='+window.avatarexport+'&d='+encodeURI(window.description);
-
     });
     
     },window.settings.tasklength); // timing for task
 
   }
 
-     
+     document.addEventListener("DOMContentLoaded", function () {
+    const continueButton = document.getElementById("continue-button"); // Button für den Abschluss des Experiments
+
+    if (continueButton) {
+        continueButton.addEventListener("click", function () {
+            // Hier könnte optional auch eine Nachricht angezeigt werden, dass das Experiment abgeschlossen ist.
+            console.log("Continue button clicked. Closing the tab.");
+
+            // Schließe das Experiment-Tab ohne Weiterleitung
+            window.close(); // Dies schließt das aktuelle Tab, das das Experiment enthält
+        });
+    }
+});
+
   // Get URL parameters to set condition number and participant number
 function get_params() {
     // condition number must be 1, 2, or 3
@@ -410,20 +381,10 @@ function get_params() {
 	  
   }
  function finishExperiment() {
-    console.log("Experiment abgeschlossen. Weiterleitung zu:", window.redirect);
-
-    if (!window.redirect || window.redirect === "") {
-        alert("Es gab ein Problem mit der Weiterleitung. Bitte kontaktieren Sie den Support.");
-    } else {
         // Weiterleitung und Tab-Schließung
         setTimeout(() => {
             if (window.opener && !window.opener.closed) {
-                // Rückleitung ins ursprüngliche LimeSurvey-Tab
-                window.opener.location.href = window.redirect + "&done=1";
                 window.close(); // Schließt das Experiment-Tab
-            } else {
-                // Falls kein Original-Tab gefunden wird, normale Weiterleitung
-                window.location.href = window.redirect + "&done=1";
             }
         }, 1000); // 1 Sekunde Verzögerung für Sicherheit
     }
