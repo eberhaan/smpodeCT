@@ -63,8 +63,8 @@ function init_avatar() {
     var avatars = window.settings.numberofavatars;
 
     // Hinzufügen der Avatare zum DOM
-    for (var i = 1; i <= avatars; i++) { 
-        const avatarHTML = `<img id="avatar_${i}" src="avatars/avatar_${i}.png" class="avatar" alt="Avatar ${i}" />`;
+    for (var i = 1; i<avatars; i++) { 
+        const avatarHTML = `<img id="avatar_'+ i+'" src="avatars/avatar_+ i + '.png" class="avatar" alt="Avatar ${i}" />`;
         $('.avatars').append(avatarHTML);
     }
 
