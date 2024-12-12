@@ -1,8 +1,4 @@
-// **Instructions** **main.js**
-// ------------
-// In this document you will find instructions on how to adjust different parameters of the paradigm. You can apply the desired changes to the document main.js on your computer or server, using a source code editor.
-// The following parameters are necessary to adjust: number of avatar images, and the redirect link at the end of the study. All other parameters have a default option and adjustments are optional.
-
+// **Instructions main.js**
 $(function() {
 
   // **Parameters**
@@ -143,7 +139,7 @@ $(function() {
 
         for(var i=0; i<times.length; i++) { 
             times[i] = +times[i];
-            themsg = usernames[i] + " gefällt dein Beitrag";
+            themsg = usernames[i] + " liked your post";
 
             setTimeout(function(themsg) {
                 that.text(parseInt(that.text()) + 1);
@@ -156,7 +152,7 @@ $(function() {
     $('#final-continue').on('click', function() {
         console.log("Continue button clicked. Closing the tab.");
 
-        // **Schließen des Tabs ohne Rückleitung**
+        // **Schließen des Tabs ohne Weiterleitung**
         window.close(); // Dies schließt das aktuelle Experiment-Tab
     });
 
@@ -170,7 +166,8 @@ $(function() {
   function finishExperiment() {
     setTimeout(() => {
         if (window.opener && !window.opener.closed) {
-            window.close(); // Dies schließt das Experiment-Tab
+            // **Schließen des Tabs ohne Weiterleitung**
+            window.close(); // Schließt das Experiment-Tab
         }
     }, 1000); // 1 Sekunde Verzögerung für Sicherheit
   }
