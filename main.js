@@ -387,8 +387,16 @@ function get_params() {
     } else {
         // Rückleitung zur spezifischen LimeSurvey-Seite
         window.location.href = window.redirect + "&done=1";
+
+        // Versuchen, das Fenster automatisch zu schließen
+        setTimeout(() => {
+            if (window.opener && !window.opener.closed) {
+                window.close();
+            }
+        }, 500);
     }
 }
+
 
   // The variable QueryString contains the url parameters, i.e. condition no. and participant no.
   // via http://stackoverflow.com/a/979995
