@@ -315,8 +315,15 @@ $(function() {
     $('#timer').text('00:00');
     
     $('#final-continue').on('click', function() {
-// Redirect link
-      location.href = window.redirect+'&p='+window.participant+'&c='+window.condition+'&u='+encodeURI(window.username)+'&av='+window.avatarexport+'&d='+encodeURI(window.description);
+
+// Close tab
+     setTimeout(() => {
+    if (window.opener && !window.opener.closed) {
+        window.close(); // Schließt das aktuelle Tab
+    } else {
+        console.warn("Das Fenster kann nicht geschlossen werden. Bitte manuell schließen.");
+    }
+}, 1000); // Verzögerung von 1 Sekunde für Sicherheit
 
     });
     
